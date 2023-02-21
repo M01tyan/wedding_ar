@@ -1,13 +1,7 @@
 <!DOCTYPE html>
 <head>
-    <script
-        type="module"
-        src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
-    ></script>
-    <script
-        nomodule
-        src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"
-    ></script>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
 </head>
 
 <style>
@@ -96,7 +90,6 @@
     }
 </style>
 <body style="height: 100vh;">
-    
     <model-viewer
         id="model-viewer"
         ar
@@ -109,7 +102,7 @@
         auto-rotate
         camera-controls
         shadow-intensity="1"
-        style="width: 100%; height: 100%; display: hidden;"
+        style="width: 100%; height: 50%;"
         minimumRenderScale="1"
     >
         <div class="loader">Loading...</div>
@@ -131,7 +124,7 @@
                 -ms-transform: translateX(-50%);
             "
         >
-            スタート 🌸
+            model-viewerを起動
         </button>
     </model-viewer>
     <script>
@@ -140,6 +133,32 @@
             document.querySelector('.loader').hidden = true
             const arButton = document.querySelector('.ar-button')
             arButton.style.display = "block"
+        })
+    </script>
+    <button
+        id="ar-js-button"
+        style="
+            width: 100%;
+            background-color: white;
+            border-radius: 4px;
+            border: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: 80px;
+            transform: translateX(-50%);
+            -webkit-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+        "
+    >
+        AR.jsを起動
+    </button>
+    <iframe id="ar-js-frame" src="" style="width: 98vw; height: 98vw;"></iframe>
+    <script>
+        const arJsButton = document.getElementById('ar-js-button')
+        arJsButton.addEventListener('click', () => {
+            const arJsFrame = document.getElementById('ar-js-frame')
+            arJsFrame.setAttribute('src', 'ar_js.html')
         })
     </script>
 </body>
